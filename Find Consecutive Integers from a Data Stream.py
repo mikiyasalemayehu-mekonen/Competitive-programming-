@@ -7,13 +7,13 @@ class DataStream:
         self.count=0
 
     def consec(self, num: int) -> bool:
-        if len(self.deque)==self.k:
-            if self.deque[0]==self.value:
-                self.count-=1
-            self.deque.popleft()
         self.deque.append(num)
-        if num==self.value:
-            self.count+=1
+        if num == self.value:
+            self.count += 1
+        
+        if len(self.deque) > self.k:
+            if self.deque.popleft() == self.value:
+                self.count -= 1
 
         return self.count==self.k
 
